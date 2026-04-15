@@ -28,3 +28,4 @@ Eine Karte, möglichkeit einen Punkt auf die Karte zu setzen es zu bennen und sp
 -Bewertung
 -Events
 -Offline
+-Automatische Validierung mit der Verbotszonen Karte damit keine Spots auf Verbotszonen erstellt werden können
