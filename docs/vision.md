@@ -29,3 +29,9 @@ Eine Karte, möglichkeit einen Punkt auf die Karte zu setzen es zu bennen und sp
 -Events
 -Offline
 -Automatische Validierung mit der Verbotszonen Karte damit keine Spots auf Verbotszonen erstellt werden können
+
+## WICHTIG:
+-Rechtliches checken und im notfall adaptieren
+-Vor Missbrauch schützen: - moderation (Name vom Spot zb Dealer-Treff)
+                          - automatische Filter
+                          - Datenschutz (bei Check-in feature)
