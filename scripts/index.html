@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuffPoint</title>
+    
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+</head>
+<body>
+    <div id="map"></div>
+    
+    <button id="addMarkerBtn" class="add-marker-btn" onclick="startPickingLocation()">
+        Marker hinzufügen
+    </button>
+
+    <div id="instructionBanner" class="instruction-banner">
+        👆 Klicke auf die Karte, um den Marker zu platzieren
+    </div>
+
+    <!-- Modal Dialog -->
+    <div id="modal" class="modal-overlay">
+        <div class="modal-box">
+            <h2>Neuen Marker hinzufügen</h2>
+            
+            <label for="marker-name">Name / Titel *</label>
+            <input type="text" id="marker-name" placeholder="z.B. Mein Lieblingsplatz" required>
+            
+            <label for="marker-description">Beschreibung (optional)</label>
+            <textarea id="marker-description" placeholder="Zusätzliche Notizen..."></textarea>
+            
+            <div class="modal-buttons">
+                <button class="btn-cancel" onclick="closeModal()">Abbrechen</button>
+                <button class="btn-save" onclick="saveMarker()">Speichern</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="position: fixed; bottom: 5px; left: 5px; z-index: 999; font-size: 10px; color: #666; background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 3px;">
+         © OpenStreetMap
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+</body>
+</html>

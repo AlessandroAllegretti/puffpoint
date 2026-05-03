@@ -1,0 +1,249 @@
+html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        #map {
+            height: 100%;
+            width: 100%;
+            cursor: default;
+        }
+
+        #map.picking-location {
+            cursor: crosshair;
+        }
+
+        /* Button unten rechts */
+        .add-marker-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 15px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            min-width: 60px;
+            min-height: 60px;
+        }
+        
+        .add-marker-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        
+        .add-marker-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .add-marker-btn::before {
+            content: "📍 ";
+        }
+
+        /* Aktiver Zustand beim Positionsauswahl */
+        .add-marker-btn.active {
+            background-color: #FF9800;
+            animation: pulse 1.5s infinite;
+        }
+
+        .add-marker-btn.active::before {
+            content: "👆 ";
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(255, 152, 0, 0.8);
+            }
+        }
+
+        /* Hinweistext */
+        .instruction-banner {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1001;
+            background-color: #FF9800;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .instruction-banner.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateX(-50%) translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Temporärer Marker (Preview) */
+        .temp-marker-icon {
+            background-color: #FF9800;
+            border: 3px solid white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        /* Modal/Dialog Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        /* Modal Box */
+        .modal-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-box h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .modal-box label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .modal-box input,
+        .modal-box textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .modal-box input:focus,
+        .modal-box textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .modal-box textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .modal-buttons button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-cancel {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+
+        .btn-cancel:hover {
+            background-color: #e0e0e0;
+        }
+
+        .btn-save {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-save:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 600px) {
+            .add-marker-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .modal-box {
+                padding: 20px;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
+            }
+
+            .modal-buttons button {
+                width: 100%;
+            }
+
+            .instruction-banner {
+                font-size: 14px;
+                padding: 12px 20px;
+            }
+        }
+
+.leaflet-control-attribution {
+    display: none;
+}
