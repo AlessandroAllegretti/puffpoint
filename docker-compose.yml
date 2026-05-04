@@ -7,3 +7,9 @@ services:
     - "8083:80"
   volumes:
     - ./frontend:/usr/share/nginx/html:ro
+
+ cloudflared:
+  image: cloudflare/cloudflared:latest
+  container_name: cloudflared-puffpoint
+  restart: always
+  command: tunnel --no-autoupdate run --token eyJhIjoiNjUxZWE0MWE2ZjUwYWU1ZDk5NGNjZDQxMzBhMDcxODQiLCJ0IjoiZDExZTYyNmYtZmU4OC00MTM4LTk1ZmUtOWFlZDY5YjFmOTViIiwicyI6Ik16RmlOREV3WkdFdFptUmpZUzAwT0RFNUxUZ3haVFF0WTJaaU16ZGhNbUkzTVRsbCJ9
