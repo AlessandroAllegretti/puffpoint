@@ -1,0 +1,9 @@
+services:
+ puffpoint:
+  image: nginx:alpine
+  container_name: puffpoint
+  restart: always
+  ports:
+    - "8083:80"
+  volumes:
+    - ./frontend:/usr/share/nginx/html:ro
